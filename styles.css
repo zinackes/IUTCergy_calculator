@@ -1,0 +1,21 @@
+body{
+    font-family: "Urbanist";
+}
+
+h1{
+    margin: 10px;
+}
+
+h3{
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+.flex{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
