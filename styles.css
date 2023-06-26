@@ -1,21 +1,60 @@
 body{
     font-family: "Urbanist";
+    margin: 0;
 }
 
 h1{
     margin: 10px;
+    font-family: "Barlow Condensed";
+    margin-left: 10px;
+    font-size: 35px;
 }
 
+.sae{
+    background-color: #24273f;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+}
 h3{
     margin: 0;
+    margin-left: 35px;
+    color: #24273f;
 }
 
 p{
     margin: 0;
 }
+input{
+    border-radius: 5px;
+    border: 1px solid black;
+}
+h2{
+    color: #24273f;
+    margin-left: 20px;
+}
+
+button{
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #24273f;
+    border-radius: 2px;
+    padding: 5px 20px;
+    margin-left: 50%;
+    transition: all .3s ease-in-out;
+}
+button:hover{
+    transition: all .3s ease-in-out;
+    background-color: #ffffff;
+    color: #24273f;
+}
+
 
 .flex{
     display: flex;
     gap: 30px;
     align-items: center;
+    line-height: 1.6rem;
 }

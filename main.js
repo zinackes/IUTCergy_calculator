@@ -60,33 +60,31 @@ function Moyenne() {
     moyennes.forEach((moyenne) => {
         const moyenneText = document.getElementById(`${moyenne.Ressources}`);
         moyenneText.textContent = isNaN(moyenne.moyenne) ? "NaN" : moyenne.moyenne.toFixed(2);
+        if(moyenne.moyenne >= 10){
+            moyenneText.style.color = "#00f500";
+        }
+        else{
+            moyenneText.style.color = "#B9121B";
+        }
     });
-    console.log(moyennes);
-    const MoyenneGlobalText = document.getElementById("MoyenneGlobal");
-    let moyenneGlobal = 0;
-    for(let i = 0; i < moyennes.length; i++){
-        moyenneGlobal += moyennes[i].moyenne * coef[i];
-    }
-    let moyenneGlobalCoef = moyenneGlobal / sommeListe(coef);
     const MoyenneGlobal2_1Text = document.getElementById("MoyenneGlobal2_1");
     const MoyenneGlobal2_2Text = document.getElementById("MoyenneGlobal2_2");
     const MoyenneGlobal2_3Text = document.getElementById("MoyenneGlobal2_3");
     const MoyenneGlobal2_4Text = document.getElementById("MoyenneGlobal2_4");
     let MoyenneGlobal2_1 = ((moyennes[0].moyenne*coef[0])+(moyennes[1].moyenne*coef[1])+(moyennes[2].moyenne*coef[2])
     +(moyennes[6].moyenne*coef[6])+(moyennes[7].moyenne*coef[7])+(moyennes[8].moyenne*coef[8])) / (17+13+15+12);
-    MoyenneGlobal2_1Text.textContent = MoyenneGlobal2_1;
+    MoyenneGlobal2_1Text.textContent = MoyenneGlobal2_1.toFixed(2);
     let MoyenneGlobal2_2 = ((moyennes[3].moyenne*coef[3])+(moyennes[4].moyenne*coef[4])+(moyennes[5].moyenne*coef[5])
     +(moyennes[6].moyenne*coef[6])+(moyennes[7].moyenne*coef[7])+(moyennes[8].moyenne*coef[8])+(moyennes[14].moyenne*coef[14])+(moyennes[15].moyenne*coef[15])) / (26+8+12+40);
-    MoyenneGlobal2_2Text.textContent = MoyenneGlobal2_2;
+    MoyenneGlobal2_2Text.textContent = MoyenneGlobal2_2.toFixed(2);
     let MoyenneGlobal2_3 = ((moyennes[9].moyenne*coef[9])+(moyennes[6].moyenne*2)+(moyennes[7].moyenne*2)
     +(moyennes[8].moyenne*1)+(moyennes[10].moyenne*coef[10])+(moyennes[11].moyenne*coef[11])+
     (moyennes[16].moyenne*coef[16])) / (25+12+18);
-    MoyenneGlobal2_3Text.textContent = MoyenneGlobal2_3;
+    MoyenneGlobal2_3Text.textContent = MoyenneGlobal2_3.toFixed(2);
     let MoyenneGlobal2_4 = ((moyennes[6].moyenne*2)+(moyennes[7].moyenne*2)+(moyennes[8].moyenne*1)
     +(moyennes[12].moyenne*coef[12])+(moyennes[13].moyenne*coef[13])+(moyennes[17].moyenne*coef[17])
     +(moyennes[18].moyenne*coef[18])+(moyennes[19].moyenne*coef[19])) / (5+11+11+19);
-    MoyenneGlobal2_4Text.textContent = MoyenneGlobal2_4;
-    MoyenneGlobalText.textContent = moyenneGlobalCoef;
+    MoyenneGlobal2_4Text.textContent = MoyenneGlobal2_4.toFixed(2);
 
     const UE1text = document.getElementById("UE1");
     const UE1Value = document.getElementById("SAE1_1").value;
