@@ -4,405 +4,92 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Big+Shoulders+Display&family=Iceberg&family=Iceland&family=Urbanist&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9738b737cc.js" crossorigin="anonymous"></script>
     <title>IUT de Cergy calculateur de moyenne de UE</title>
 </head>
 <body>
 
     <main>
-        <div>
-            <h1>Chimie générale et organique</h1>
-            <div class="flex">
-                <h3>DS Chimie Générale</h3>
-                <p>Notes <input type="number" id="R201N"></p>
-                <p>Coef <input type="number" id="R201C" value="1"></p>
+
+        <div class="navigation">
+            <div class="box selected">
+                <p>BMB 2022/2023</p>
+                <input type="text" class="invisible">
+                <button onclick="Renommer(0)">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
             </div>
-            <div class="flex">
-                <h3>TP ester de banane</h3>
-                <p>Notes <input type="number" id="R201N"></p>
-                <p>Coef <input type="number" id="R201C" value="0.2"></p>
+            <div class="box">
+                <p>BMB 2023/2024</p>
+                <input type="text" class="invisible">
+                <button onclick="Renommer(1)"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
-            <div class="flex">
-                <h3>TP dosage retour vitamine c</h3>
-                <p>Notes <input type="number" id="R201N"></p>
-                <p>Coef <input type="number" id="R201C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP CCM</h3>
-                <p>Notes <input type="number" id="R201N" ></p>
-                <p>Coef <input type="number" id="R201C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS FERRY</h3>
-                <p>Notes <input type="number" id="R201N" ></p>
-                <p>Coef <input type="number" id="R201C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP contrôle de la linéarité d'un spectro. Benamara</h3>
-                <p>Notes <input type="number" id="R201N" ></p>
-                <p>Coef <input type="number" id="R201C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R201"></span></h2>
+            <button id="AddBox" onclick="AddBox()">+</button>
         </div>
-        <div>
-            <h1>Biochimie structurale et techniques analytiques</h1>
-            <div class="flex">
-                <h3>DS Biochimie QCM</h3>
-                <p>Notes <input type="number" id="R202N" ></p>
-                <p>Coef <input type="number" id="R202C" value="1"></p>
+
+
+        <div class="AllOnglets">
+            <div class="onglet onglet_active">
+                <h1 class="bandeau">Matières</h1>
+                <div class="content">
+                    <div class="title">
+                        <h1>Chimie générale et organique</h1>
+                        <input class="invisible" type="text">
+                        <button onclick="RenommerTitre(0)"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                    <div class="row">
+                        <p>Notes</p>
+                        <p>Coef</p>
+                    </div>
+                    <div class="flex">
+                        <input class="text" type="text" value="DS de ratio">
+                        <p><input type="number" id="R201N" value="0.5"></p>
+                        <p><input type="number" id="R201C" value="1"></p>
+                    </div>
+                    <button class="BeforeButton" onclick="AddNote(0, 0)">+</button>
+                    <h2>Moyenne : <span id="R201"></span></h2>
+                </div>
+
+                <button class="matiere" onclick="AddMatiere()">Ajouter une matière</button>
+
+                <div class="sae">
+                    <h1 class="bandeau">SAE</h1>
+                    <button class="matiere" onclick="AddMatiere(true)">Ajouter une SAE</button>
+                </div>
+
+                <div class="resultat">
+                    <h1 class="bandeau">Résultats</h1>
+                    <div class="flex">
+                        Quel type de résultat voulez-vous?
+                        <div class="flex">
+                            <div>
+                                <input type="radio" id="" name="SAE" value="1Semestre">
+                                <label for="1Semestre">Les moyennes de 1 Semestre</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="" name="SAE" value="2Semestres">
+                                <label for="2Semestres">Les moyennes de 2 Semestres</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex ResultatMoyenne">
+                        <div id="sae0_1"></div>
+                        <div id="sae0_2"></div>
+                    </div>
+                </div>
             </div>
-            <div class="flex">
-                <h3>TP Diagnostic de la mononucléose infectieuse</h3>
-                <p>Notes <input type="number" id="R202N" ></p>
-                <p>Coef <input type="number" id="R202C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R202"></span></h2>
+    
+            <div class="onglet"></div>
         </div>
-        <div>
-            <h1>Microbiologie</h1>
-            <div class="flex">
-                <h3>QCM Antibiotiques</h3>
-                <p>Notes <input type="number" id="R203N" ></p>
-                <p>Coef <input type="number" id="R203C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>QCM Microbiote</h3>
-                <p>Notes <input type="number" id="R203N"></p>
-                <p>Coef <input type="number" id="R203C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS</h3>
-                <p>Notes <input type="number" id="R203N" ></p>
-                <p>Coef <input type="number" id="R203C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP ETUDE DE LA SENSIBILITE AUX ANTIBIOTIQUES</h3>
-                <p>Notes <input type="number" id="R203N"></p>
-                <p>Coef <input type="number" id="R203C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP identification bact</h3>
-                <p>Notes <input type="number" id="R203N"></p>
-                <p>Coef <input type="number" id="R203C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R203"></span></h2>
-        </div>
-        <div>
-            <h1>Biochimie cellulaire</h1>
-            <div class="flex">
-                <h3>TP DAPI</h3>
-                <p>Notes <input type="number" id="R204N" ></p>
-                <p>Coef <input type="number" id="R204C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS BIOLOGIE CELLULAIR</h3>
-                <p>Notes <input type="number" id="R204N" ></p>
-                <p>Coef <input type="number" id="R204C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R204"></span></h2>
-        </div>
-        <div>
-            <h1>Biologie et physiologie</h1>
-            <div class="flex">
-                <h3>DS Milieu intérieur & compartiments liquidiens</h3>
-                <p>Notes <input type="number" id="R205N" ></p>
-                <p>Coef <input type="number" id="R205C" value="0.3"></p>
-            </div>
-            <div class="flex">
-                <h3>TP photosynthèse</h3>
-                <p>Notes <input type="number" id="R205N"></p>
-                <p>Coef <input type="number" id="R205C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS physio végétale</h3>
-                <p>Notes <input type="number" id="R205N"></p>
-                <p>Coef <input type="number" id="R205C" value="0.5"></p>
-            </div>
-            <div class="flex">
-                <h3>DS excrétion rénale</h3>
-                <p>Notes <input type="number" id="R205N"></p>
-                <p>Coef <input type="number" id="R205C" value="0.2"></p>
-            </div>
-            <h2>Moyenne : <span id="R205"></span></h2>
-        </div>
-        <div>
-            <h1>Biochimie métabolique</h1>
-            <div class="flex">
-                <h3>DS "Biochimie métabo"</h3>
-                <p>Notes <input type="number" id="R207N"></p>
-                <p>Coef <input type="number" id="R207C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R207"></span></h2>
-        </div>
-        <div>
-            <h1>Communication</h1>
-            <div class="flex">
-                <h3>MindView</h3>
-                <p>Notes <input type="number" id="R209N"></p>
-                <p>Coef <input type="number" id="R209C" value="0.5"></p>
-            </div>
-            <div class="flex">
-                <h3>Revue de presse</h3>
-                <p>Notes <input type="number" id="R209N"></p>
-                <p>Coef <input type="number" id="R209C" value="2"></p>
-            </div>
-            <div class="flex">
-                <h3>Grammaire/Orthographe</h3>
-                <p>Notes <input type="number" id="R209N"></p>
-                <p>Coef <input type="number" id="R209C" value="0.5"></p>
-            </div>
-            <div class="flex">
-                <h3>Communication professionnelle écrite</h3>
-                <p>Notes <input type="number" id="R209N"></p>
-                <p>Coef <input type="number" id="R209C" value="2"></p>
-            </div>
-            <h2>Moyenne : <span id="R209"></span></h2>
-        </div>
-        <div>
-            <h1>Anglais</h1>
-            <div class="flex">
-                <h3>1er Contrôle anglais Traduction (risque chimique)</h3>
-                <p>Notes <input type="number" id="R210N"></p>
-                <p>Coef <input type="number" id="R210C" value="0.5"></p>
-            </div>
-            <div class="flex">
-                <h3>DST "Gut Microbiome Health"</h3>
-                <p>Notes <input type="number" id="R210N" ></p>
-                <p>Coef <input type="number" id="R210C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>Note globale expression orale</h3>
-                <p>Notes <input type="number" id="R210N" ></p>
-                <p>Coef <input type="number" id="R210C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DST "speeding up stem cell cultures"</h3>
-                <p>Notes <input type="number" id="R210N"></p>
-                <p>Coef <input type="number" id="R210C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>Finale exam</h3>
-                <p>Notes <input type="number" id="R210N" ></p>
-                <p>Coef <input type="number" id="R210C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R210"></span></h2>
-        </div>
-        <div>
-            <h1>PPP</h1>
-            <div class="flex">
-                <h3>PPP</h3>
-                <p>Notes <input type="number" id="R211N"></p>
-                <p>Coef <input type="number" id="R211C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R211"></span></h2>
-        </div>
-        <div>
-            <h1>Culture cellulaire</h1>
-            <div class="flex">
-                <h3>TP Viabilité cellulaire</h3>
-                <p>Notes <input type="number" id="R212N" ></p>
-                <p>Coef <input type="number" id="R212C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS Culture cellulaire</h3>
-                <p>Notes <input type="number" id="R212N"></p>
-                <p>Coef <input type="number" id="R212C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R212"></span></h2>
-        </div>
-        <div>
-            <h1>Bio cellulaire complémentaire</h1>
-            <div class="flex">
-                <h3>DS MEC</h3>
-                <p>Notes <input type="number" id="R213N" ></p>
-                <p>Coef <input type="number" id="R213C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R213"></span></h2>
-        </div>
-        <div>
-            <h1>Physio et exp animale</h1>
-            <div class="flex">
-                <h3>oreille de lapin/queue de souris</h3>
-                <p>Notes <input type="number" id="R214N"></p>
-                <p>Coef <input type="number" id="R214C" value="0.2"></p>
-            </div>
-            <div class="flex">
-                <h3>prélèvement/injection</h3>
-                <p>Notes <input type="number" id="R214N" ></p>
-                <p>Coef <input type="number" id="R214C" value="0.2"></p>
-            </div>
-            <h2>Moyenne : <span id="R214"></span></h2>
-        </div>
-        <div>
-            <h1>Biochimie médicale</h1>
-            <div class="flex">
-                <h3>DS "Biochimie médicale"</h3>
-                <p>Notes <input type="number" id="R215N" ></p>
-                <p>Coef <input type="number" id="R215C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP Dosage du calcium</h3>
-                <p>Notes <input type="number" id="R215N" ></p>
-                <p>Coef <input type="number" id="R215C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP Etude qualité</h3>
-                <p>Notes <input type="number" id="R215N" ></p>
-                <p>Coef <input type="number" id="R215C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R215"></span></h2>
-        </div>
-        <div>
-            <h1>Microbiologie médicale</h1>
-            <div class="flex">
-                <h3>Oraux analyses d'articles</h3>
-                <p>Notes <input type="number" id="R216N" ></p>
-                <p>Coef <input type="number" id="R216C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS</h3>
-                <p>Notes <input type="number" id="R216N" ></p>
-                <p>Coef <input type="number" id="R216C" value="2"></p>
-            </div>
-            <div class="flex">
-                <h3>Quiz TP Hémocultures</h3>
-                <p>Notes <input type="number" id="R216N"></p>
-                <p>Coef <input type="number" id="R216C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP Hémocultures</h3>
-                <p>Notes <input type="number" id="R216N"></p>
-                <p>Coef <input type="number" id="R216C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="R216"></span></h2>
-        </div>
-        <h1 class="sae">SAE</h1>
-        <div>
-            <h1>Mesurer un paramètre biologique</h1>
-            <div class="flex">
-                <h3>TP "Protéinurie". Benamara</h3>
-                <p>Notes <input type="number" id="SAE2_2N"></p>
-                <p>Coef <input type="number" id="SAE2_2C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS " Endocrinologie & physiologie musculaire" (FERHI)</h3>
-                <p>Notes <input type="number" id="SAE2_2N"></p>
-                <p>Coef <input type="number" id="SAE2_2C" value="2"></p>
-            </div>
-            <div class="flex">
-                <h3>Projet tuteuré "Techniques de dosage des lactates dans le sang" 
-                    (DELORT) ou "Hausse CO2 sur métabolismes photosynthétiques" (AREIAS)</h3>
-                <p>Notes <input type="number" id="SAE2_2N"></p>
-                <p>Coef <input type="number" id="SAE2_2C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>Réponse para physiologique TP Exploration fonctionnelle : Spirométrie tension</h3>
-                <p>Notes <input type="number" id="SAE2_2N"></p>
-                <p>Coef <input type="number" id="SAE2_2C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="SAE2_2"></span></h2>
-        </div>
-        <div>
-            <h1>Portfolio Mesurer un paramètre biologique</h1>
-            <div class="flex">
-                <h3>E-port-folio (FERHI)</h3>
-                <p>Notes <input type="number" id="SAE2_2PortfolioN"></p>
-                <p>Coef <input type="number" id="SAE2_2PortfolioC" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="SAE2_2Portfolio"></span></h2>
-        </div>
-        <div>
-            <h1>Cultiver des cellules dans le respect des bonnes pratiques de laboratoire</h1>
-            <div class="flex">
-                <h3>TP Congélation</h3>
-                <p>Notes <input type="number" id="SAE2_3N"></p>
-                <p>Coef <input type="number" id="SAE2_3C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>TP Adhérence cellulaire</h3>
-                <p>Notes <input type="number" id="SAE2_3N"></p>
-                <p>Coef <input type="number" id="SAE2_3C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="SAE2_3"></span></h2>
-        </div>
-        <div>
-            <h1>Mettre en œuvre un examen de biologie médicale
-                 de première intention en biochimie dans le cadre d’un contrôle et/ou
-                  d’une prévention</h1>
-            <div class="flex">
-                <h3>TP "Dosages des triglycérides" (DEGAT)</h3>
-                <p>Notes <input type="number" id="SAE2_4N"></p>
-                <p>Coef <input type="number" id="SAE2_4C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS "Exploration d'une anomalie lipidique" (FERHI)</h3>
-                <p>Notes <input type="number" id="SAE2_4N"></p>
-                <p>Coef <input type="number" id="SAE2_4C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>PT</h3>
-                <p>Notes <input type="number" id="SAE2_4N" ></p>
-                <p>Coef <input type="number" id="SAE2_4C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="SAE2_4"></span></h2>
-        </div>
-        <div>
-            <h1>Mise en œuvre d'un examen cytobactériologique des urines</h1>
-            <div class="flex">
-                <h3>QCM ECBU</h3>
-                <p>Notes <input type="number" id="SAE2_5N"></p>
-                <p>Coef <input type="number" id="SAE2_5C" value="1"></p>
-            </div>
-            <div class="flex">
-                <h3>DS</h3>
-                <p>Notes <input type="number" id="SAE2_5N"></p>
-                <p>Coef <input type="number" id="SAE2_5C" value="2"></p>
-            </div>
-            <div class="flex">
-                <h3>Examen cytobactériologique des urines en pratique</h3>
-                <p>Notes <input type="number" id="SAE2_5N"></p>
-                <p>Coef <input type="number" id="SAE2_5C" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="SAE2_5"></span></h2>
-        </div>
-        <div>
-            <h1>Portfolio Mise en œuvre d'un examen cytobactériologique des urines</h1>
-            <div class="flex">
-                <h3>Portoflio</h3>
-                <p>Notes <input type="number" id="SAE2_5PortfolioN"></p>
-                <p>Coef <input type="number" id="SAE2_5PortfolioC" value="1"></p>
-            </div>
-            <h2>Moyenne : <span id="SAE2_5Portfolio"></span></h2>
-        </div>
+
+        
 
         <button onclick="Moyenne()"> Calculer les moyennes</button>
-        <div class="flex">
-            <h2>Moyenne SAE2.1: <span id="MoyenneGlobal2_1"></span></h2>
-            <h2>Moyenne SAE1.1: <input type="number" id="SAE1_1" ></h2>
-        </div>
-        <div class="flex">
-            <h2>Moyenne SAE2.2: <span id="MoyenneGlobal2_2"></span></h2>
-            <h2>Moyenne SAE1.2: <input type="number" id="SAE1_2" ></h2>
-        </div>
-        <div class="flex">
-            <h2>Moyenne SAE2.3: <span id="MoyenneGlobal2_3"></span></h2>
-            <h2>Moyenne SAE1.3: <input type="number" id="SAE1_3" ></h2>
-        </div>
-        <div class="flex">
-            <h2>Moyenne SAE2.4: <span id="MoyenneGlobal2_4"></span></h2>
-            <h2>Moyenne SAE1.4: <input type="number" id="SAE1_4" ></h2>
-        </div>
-
-        <div>
-            <h1>Passage en seconde année: <span id="Passage"></span></h1>
-            <h2>UE1 : <span id="UE1"></span></h2>
-            <h2>UE2 : <span id="UE2"></span></h2>
-            <h2>UE3 : <span id="UE3"></span></h2>
-            <h2>UE4 : <span id="UE4"></span></h2>
-        </div>
     </main>
     
 </body>
-<script src="main.js"></script>
+<script src="navigation.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
 </html>

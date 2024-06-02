@@ -1,36 +1,101 @@
 body{
-    font-family: "Urbanist";
+    font-family: "Sora";
     margin: 0;
+    transition: all .3s ease;
+    background: linear-gradient(160deg, #0A0A0B, #18181A);
 }
 
-h1{
+h1, .title input{
     margin: 10px;
-    font-family: "Barlow Condensed";
+    font-family: "Sora";
     margin-left: 10px;
-    font-size: 35px;
+    font-size: 34px;
+    color: #fff;
+    font-weight: 500;
 }
 
-.sae{
-    background-color: #24273f;
+.title{
+    display: flex;
+    align-items: center;
+}
+
+.title button{
+    margin: 0 !important;
+    margin-left: 5px !important;
+}
+
+.bandeau{
+    background-color: #64b3b9;
     color: #ffffff;
     text-align: center;
     margin: 0;
 }
-h3{
+.flex .text{
     margin: 0;
-    margin-left: 35px;
-    color: #24273f;
+    color: #B4CBFC;
+    font-weight: 400;
+    font-family: "Sora";
+    border: 0;
+    background: transparent;
+    font-size: 17px;
+    text-align: left;
+    margin-left: 10px;
+    border: 1px solid transparent;
+}
+
+.flex .text:focus{
+    outline: none;
+    border: 1px solid #0A0A0B;
+}
+
+.flex{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    line-height: 1.6rem;
+    position: relative;
+    margin: 13px 0;
+}
+
+.flex h3{
+    width: 200px;
+}
+
+.flex:after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    background: #555555;
+    width: 60%;
+    height: 1px;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    margin-left: 312px;
+    justify-content: space-between;
+    max-width: 240px;
 }
 
 p{
     margin: 0;
+    color: #bcbdbd;
 }
+
+
 input{
     border-radius: 5px;
     border: 1px solid black;
+    background: #1c1917;
+    color: #bcbdbd;
+    font-family: "Sora";
+    text-align: center;
 }
 h2{
-    color: #24273f;
+    color: #bcbdbd;
     margin-left: 20px;
 }
 
@@ -51,10 +116,140 @@ button:hover{
     color: #24273f;
 }
 
+.content{
+    background: #292524;
+    border-radius: 10px;
+}
 
-.flex{
+.sae{
     display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.resultat .bandeau{
+    margin-top: 35px;
+    background: #1d6f77;
+}
+
+.resultat .flex{
+    justify-content: center;
+    color: #fff;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ResultatMoyenne{
+    flex-direction: row !important;
+    justify-content: space-evenly !important;
+}
+
+.resultat .flex .flex{
+    flex-direction: row;
     gap: 30px;
+}
+
+.resultat .flex::after{
+    width: 0;
+}
+
+.matiere{
+    font-family: "Sora";
+    padding: 15px 20px;
+    margin: 0 !important;
+    background: #08322d !important;
+    height: 50px !important;
+}
+
+.matiere:hover{
+    background: #84b378 !important;
+}
+
+
+.navigation{
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    line-height: 1.6rem;
+}
+
+.box{
+    display: flex;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: #212221;
+    width: 300px;
+    padding: 15px 25px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.box:hover{
+    background: #7cab67;
+    transition: all .3s ease;
+}
+
+.box p{
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.box button{
+    padding: 5px 13px;
+    position: absolute;
+    right: 10;
+}
+
+.selected{
+    background: #64b3b9;
+}
+
+.selected p{
+    color: #212221;
+}
+
+.onglet{
+    margin: 10px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.navigation button, .onglet button{
+    margin: 0;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.onglet button{
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Sora";
+    background: #1c1917;
+}
+
+.onglet button:hover{
+    background: #64b3b9;
+}
+
+.box input{
+    border: 2px solid #212221;
+    outline: none;
+    font-family: "Sora";
+    padding: 3px 5px;
+    font-size: 15px;
+}
+
+.onglet, .invisible{
+    display: none;
+}
+
+.onglet_active{
+    display: flex;
 }
